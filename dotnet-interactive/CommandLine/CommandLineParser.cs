@@ -221,6 +221,11 @@ namespace Microsoft.DotNet.Interactive.App.CommandLine
                                  .UseXplot()
                                  .UseMathAndLaTeX(),
                             new PowerShellKernel()
+                                 .UseDefaultFormatting()
+                                 .UseNugetDirective()
+                                 .UseKernelHelpers()
+                                 .UseXplot()
+                                 .UseMathAndLaTeX()
                          }
                          .UseDefaultMagicCommands()
                          .UseAbout();

@@ -5,6 +5,7 @@ using System;
 using Microsoft.DotNet.Interactive.Commands;
 using Microsoft.DotNet.Interactive.CSharp;
 using Microsoft.DotNet.Interactive.FSharp;
+using Microsoft.DotNet.Interactive.PowerShell;
 using Microsoft.DotNet.Interactive.Jupyter.Formatting;
 
 namespace Microsoft.DotNet.Interactive.Jupyter
@@ -22,6 +23,22 @@ namespace Microsoft.DotNet.Interactive.Jupyter
                 new SubmitCode($@"
 #r ""{typeof(LaTeXString).Assembly.Location.Replace("\\", "/")}""
 using {typeof(LaTeXString).Namespace};
+"));
+
+            return kernel;
+        }
+
+        public static PowerShellKernel UseMathAndLaTeX(this PowerShellKernel kernel)
+        {
+            if (kernel == null)
+            {
+                throw new ArgumentNullException(nameof(kernel));
+            }
+
+            kernel.DeferCommand(
+                new SubmitCode($@"
+#r ""{typeof(LaTeXString).Assembly.Location.Replace("\\", "/")}""
+using namespace {typeof(LaTeXString).Namespace};
 "));
 
             return kernel;

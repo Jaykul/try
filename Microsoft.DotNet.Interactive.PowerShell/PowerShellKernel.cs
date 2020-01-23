@@ -12,9 +12,11 @@ using System.Management.Automation.Runspaces;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.CodeAnalysis;
 using Microsoft.DotNet.Interactive.Commands;
 using Microsoft.DotNet.Interactive.Events;
 using Microsoft.DotNet.Interactive.Formatting;
+using Microsoft.DotNet.Interactive.Utility;
 
 namespace Microsoft.DotNet.Interactive.PowerShell
 {
@@ -307,5 +309,22 @@ namespace Microsoft.DotNet.Interactive.PowerShell
             powerShell.Streams.Verbose.DataAdding += streamHandler.VerboseDataAdding;
             powerShell.Streams.Information.DataAdding += streamHandler.InformationDataAdding;
         }
+
+        internal void AddScriptReferences(IReadOnlyList<ResolvedPackageReference> assemblyPaths)
+        {
+            var references = assemblyPaths
+                             .SelectMany(r => r.AssemblyPaths)
+                             .Select(r => r.FullName);
+
+            var pipeline = _runspace.CreatePipeline();
+            var command = new Command("Add-Type");
+
+            command.Parameters.Add("Path", references);
+            pipeline.Commands.Add(command);
+            pipeline.Invoke();
+        }
+
+
+        internal NativeAssemblyLoadHelper NativeAssemblyLoadHelper { get; }
     }
 }
