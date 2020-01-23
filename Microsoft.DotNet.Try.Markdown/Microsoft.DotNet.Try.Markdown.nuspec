@@ -8,7 +8,7 @@
                 <!-- Dependencies of Microsoft.DotNet.Try.Markdown -->
                 <dependency id="Microsoft.AspNetCore.Html.Abstractions" version="$MicrosoftAspNetCoreHtmlAbstractionsVersion$" />
                 <dependency id="System.CommandLine" version="$SystemCommandLineVersion$" />
-                <dependency id="Markdig" version="$MarkdigVersion$" />
+                <dependency id="Markdig.Signed" version="$MarkdigVersion$" />
 
                 <!-- Dependencies of MLS.Agent.Tools -->
                 <dependency id="Newtonsoft.Json" version="$NewtonsoftJsonVersion$" />

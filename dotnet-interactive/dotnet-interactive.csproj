@@ -14,7 +14,7 @@
     <IsPackable>true</IsPackable>
     <PackAsTool>true</PackAsTool>
     <Description>.NET Interactive</Description>
-    <NoWarn>$(NoWarn);8002</NoWarn><!-- Markdig isn't strongly signed -->
+    <NoWarn>$(NoWarn);8002</NoWarn><!-- XPlot.Plotly and Clockwise aren't strongly signed -->
     <NoWarn>$(NoWarn);NU5129</NoWarn><!-- Improper warning about missing props file.  See https://github.com/NuGet/Home/issues/8627 -->
   </PropertyGroup>
 
@@ -115,5 +115,5 @@
   <Target Name="ZipDotnetKernel" BeforeTargets="PrepareForBuild" DependsOnTargets="CopyKernelFiles;CopyLogoFiles">
     <ZipDirectory SourceDirectory="$(KernelDestinationDirectory)" DestinationFile="$(IntermediateOutputPath)/dotnetKernel.zip" Overwrite="true" />
   </Target>
-  
+
 </Project>

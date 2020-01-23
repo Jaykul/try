@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-     <NoWarn>$(NoWarn);8002</NoWarn><!-- Assent, Clockwise, and Markdig aren't strongly signed -->
+     <NoWarn>$(NoWarn);8002</NoWarn><!-- Assent and Clockwise aren't strongly signed -->
   </PropertyGroup>
 
   <ItemGroup>
